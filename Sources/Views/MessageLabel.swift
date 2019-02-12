@@ -320,12 +320,12 @@ open class MessageLabel: UILabel {
     private func parse(text: NSAttributedString) -> [NSTextCheckingResult] {
         guard enabledDetectors.isEmpty == false else { return [] }
 
-        let matches: [NSTextCheckingResult] = []
+        var matches: [NSTextCheckingResult] = []
         let detectors = DetectorType.getDataDetectors(detectorTypes: enabledDetectors)
         let range = NSRange(location: 0, length: text.length)
         
         for detector in detectors {
-            let currMatches: [NSTextCheckingResult] = detector?.matches(in: text.string, options: [], range: range) ?? []
+            let currMatches: [NSTextCheckingResult] = detector.matches(in: text.string, options: [], range: range)
             matches += currMatches
         }
 
@@ -365,7 +365,7 @@ open class MessageLabel: UILabel {
                 let tuple: (NSRange, MessageTextCheckingType) = (result.range, .phoneNumber(result.phoneNumber))
                 ranges.append(tuple)
                 rangesForDetectors.updateValue(ranges, forKey: detector)
-            case .link:
+            case .url:
                 let tuple: (NSRange, MessageTextCheckingType) = (result.range, .link(result.url))
                 ranges.append(tuple)
                 rangesForDetectors.updateValue(ranges, forKey: detector)
@@ -374,7 +374,8 @@ open class MessageLabel: UILabel {
                 ranges.append(tuple)
                 rangesForDetectors.updateValue(ranges, forKey: detector)
             case .tag:
-                let tagString = String(text[Range(result.range, in: attributedText)!])
+//                let tagString = String(attributedText![Range(result.range, in: attributedText)!])
+                let tagString = "WombatLove"
                 let tuple: (NSRange, MessageTextCheckingType) = (result.range, .tag(tagString))
                 ranges.append(tuple)
                 rangesForDetectors.updateValue(ranges, forKey: detector)
@@ -479,7 +480,7 @@ open class MessageLabel: UILabel {
     }
     
     private func handleTag(_ tag: String) {
-        delegate?.didSelecttag(tag)
+        delegate?.didSelectTag(tag)
     }
     
 }

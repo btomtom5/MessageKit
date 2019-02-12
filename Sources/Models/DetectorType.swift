@@ -88,14 +88,12 @@ public enum DetectorType {
              .transitInformation:
             return try! NSDataDetector(types: self.textCheckingType.rawValue)
         case .tag:
-            return try! NSRegularExpression(pattern: "\\B#\\w*[a-zA-Z]+\\w*", options: [])
-        default:
-            fatalError("unsupported DetectorType was used")
+            return try! NSRegularExpression(pattern: "\\B#\\w*[a-zA-Z]+\\w*", options: []) as! NSDataDetector
         }
     }
     
     static func getDataDetectors(detectorTypes: [DetectorType]) -> [NSDataDetector] {
-        let detectors: [NSDataDetector] = []
+        var detectors: [NSDataDetector] = []
         let nativeDetectorTypes = detectorTypes.filter({$0.isSupportedByNSDataDetector})
         let checkingTypes = nativeDetectorTypes.reduce(0) { $0 | $1.textCheckingType.rawValue }
         
