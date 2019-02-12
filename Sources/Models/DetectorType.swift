@@ -39,14 +39,14 @@ public enum DetectorType {
     //case custom
     init(textCheckingResult: NSTextCheckingResult) {
         switch textCheckingResult.resultType {
-        case .address: return .address
-        case .date: return .date
-        case .phoneNumber: return .phoneNumber
-        case .link: return .url
-        case .transitInformation: return .transitInformation
+        case .address: self = .address
+        case .date: self = .date
+        case .phoneNumber: self = .phoneNumber
+        case .link: self = .url
+        case .transitInformation: self = .transitInformation
         case .regularExpression:
             if textCheckingResult.regularExpression?.pattern == DetectorType.tag.dataDetector.pattern {
-                return .tag
+                self = .tag
             } else {
                 fatalError("unsupported NSTextCheckingResult.CheckingType provided to DetectorType initializer")
             }
