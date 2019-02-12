@@ -56,6 +56,12 @@ public protocol MessageLabelDelegate: AnyObject {
     /// - Parameters:
     ///   - transitInformation: The selected transit information.
     func didSelectTransitInformation(_ transitInformation: [String: String])
+    
+    /// Triggered when a tap occurs on a detected tag.
+    ///
+    /// - Parameters:
+    ///   - tag: The selected tag.
+    func didSelectTag(_ tag: String)
 
 }
 
@@ -70,5 +76,6 @@ public extension MessageLabelDelegate {
     func didSelectURL(_ url: URL) {}
     
     func didSelectTransitInformation(_ transitInformation: [String: String]) {}
-
+    
+    func didSelectTag(_ tag: String) {}
 }

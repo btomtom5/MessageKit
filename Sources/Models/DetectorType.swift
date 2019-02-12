@@ -31,13 +31,30 @@ public enum DetectorType {
     case phoneNumber
     case url
     case transitInformation
+    case tag
 
     // MARK: - Not supported yet
 
     //case mention
-    //case hashtag
     //case custom
-
+    init(textCheckingResult: NSTextCheckingResult) {
+        switch textCheckingResult.resultType {
+        case .address: return .address
+        case .date: return .date
+        case .phoneNumber: return .phoneNumber
+        case .link: return .url
+        case .transitInformation: return .transitInformation
+        case .regularExpression:
+            if textCheckingResult.regularExpression?.pattern == DetectorType.tag.dataDetector.pattern {
+                return .tag
+            } else {
+                fatalError("unsupported NSTextCheckingResult.CheckingType provided to DetectorType initializer")
+            }
+        default:
+            fatalError("unsupported NSTextCheckingResult.CheckingType provided to DetectorType initializer")
+        }
+    }
+    
     internal var textCheckingType: NSTextCheckingResult.CheckingType {
         switch self {
         case .address: return .address
@@ -45,7 +62,54 @@ public enum DetectorType {
         case .phoneNumber: return .phoneNumber
         case .url: return .link
         case .transitInformation: return .transitInformation
+        case .tag: return .regularExpression
         }
     }
+    
+    private var isSupportedByNSDataDetector: Bool {
+        switch self {
+        case .address,
+             .date,
+             .phoneNumber,
+             .url,
+             .transitInformation:
+            return true
+        default:
+            return false
+        }
+    }
+    
+    internal var dataDetector: NSDataDetector {
+        switch self {
+        case .address,
+             .date,
+             .phoneNumber,
+             .url,
+             .transitInformation:
+            return try! NSDataDetector(types: self.textCheckingType.rawValue)
+        case .tag:
+            return try! NSRegularExpression(pattern: "\\B#\\w*[a-zA-Z]+\\w*", options: [])
+        default:
+            fatalError("unsupported DetectorType was used")
+        }
+    }
+    
+    static func getDataDetectors(detectorTypes: [DetectorType]) -> [NSDataDetector] {
+        let detectors: [NSDataDetector] = []
+        let nativeDetectorTypes = detectorTypes.filter({$0.isSupportedByNSDataDetector})
+        let checkingTypes = nativeDetectorTypes.reduce(0) { $0 | $1.textCheckingType.rawValue }
+        
+        if let detector = try? NSDataDetector(types: checkingTypes) {
+            detectors.append(detector)
+        }
+        
+        let nonNativeDetectorTypes = detectorTypes.filter({!$0.isSupportedByNSDataDetector})
+        
+        for detectorType in nonNativeDetectorTypes {
+            detectors.append(detectorType.dataDetector)
+        }
+        return detectors
+    }
+    
 
 }

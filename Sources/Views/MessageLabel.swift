@@ -141,6 +141,8 @@ open class MessageLabel: UILabel {
     open internal(set) var urlAttributes: [NSAttributedString.Key: Any] = defaultAttributes
     
     open internal(set) var transitInformationAttributes: [NSAttributedString.Key: Any] = defaultAttributes
+    
+    open internal(set) var tagAttributes: [NSAttributedString.Key: Any] = defaultAttributes
 
     public func setAttributes(_ attributes: [NSAttributedString.Key: Any], detector: DetectorType) {
         switch detector {
@@ -154,6 +156,8 @@ open class MessageLabel: UILabel {
             urlAttributes = attributes
         case .transitInformation:
             transitInformationAttributes = attributes
+        case .tag:
+            tagAttributes = attributes
         }
         if isConfiguring {
             attributesNeedUpdate = true
@@ -283,26 +287,28 @@ open class MessageLabel: UILabel {
             return urlAttributes
         case .transitInformation:
             return transitInformationAttributes
+        case .tag:
+            return tagAttributes
         }
 
     }
 
-    private func detectorAttributes(for checkingResultType: NSTextCheckingResult.CheckingType) -> [NSAttributedString.Key: Any] {
-        switch checkingResultType {
-        case .address:
-            return addressAttributes
-        case .date:
-            return dateAttributes
-        case .phoneNumber:
-            return phoneNumberAttributes
-        case .link:
-            return urlAttributes
-        case .transitInformation:
-            return transitInformationAttributes
-        default:
-            fatalError(MessageKitError.unrecognizedCheckingResult)
-        }
-    }
+//    private func detectorAttributes(for checkingResultType: NSTextCheckingResult.CheckingType) -> [NSAttributedString.Key: Any] {
+//        switch checkingResultType {
+//        case .address:
+//            return addressAttributes
+//        case .date:
+//            return dateAttributes
+//        case .phoneNumber:
+//            return phoneNumberAttributes
+//        case .link:
+//            return urlAttributes
+//        case .transitInformation:
+//            return transitInformationAttributes
+//        default:
+//            fatalError(MessageKitError.unrecognizedCheckingResult)
+//        }
+//    }
     
     private func setupView() {
         numberOfLines = 0
@@ -313,10 +319,15 @@ open class MessageLabel: UILabel {
 
     private func parse(text: NSAttributedString) -> [NSTextCheckingResult] {
         guard enabledDetectors.isEmpty == false else { return [] }
-        let checkingTypes = enabledDetectors.reduce(0) { $0 | $1.textCheckingType.rawValue }
-        let detector = try? NSDataDetector(types: checkingTypes)
+
+        let matches: [NSTextCheckingResult] = []
+        let detectors = DetectorType.getDataDetectors(detectorTypes: enabledDetectors)
         let range = NSRange(location: 0, length: text.length)
-        let matches = detector?.matches(in: text.string, options: [], range: range) ?? []
+        
+        for detector in detectors {
+            let currMatches: [NSTextCheckingResult] = detector?.matches(in: text.string, options: [], range: range) ?? []
+            matches += currMatches
+        }
 
         guard enabledDetectors.contains(.url) else {
             return matches
@@ -339,33 +350,34 @@ open class MessageLabel: UILabel {
         guard checkingResults.isEmpty == false else { return }
         
         for result in checkingResults {
-
-            switch result.resultType {
+            let detector = DetectorType(textCheckingResult: result)
+            var ranges = rangesForDetectors[detector] ?? []
+            switch detector {
             case .address:
-                var ranges = rangesForDetectors[.address] ?? []
                 let tuple: (NSRange, MessageTextCheckingType) = (result.range, .addressComponents(result.addressComponents))
                 ranges.append(tuple)
-                rangesForDetectors.updateValue(ranges, forKey: .address)
+                rangesForDetectors.updateValue(ranges, forKey: detector)
             case .date:
-                var ranges = rangesForDetectors[.date] ?? []
                 let tuple: (NSRange, MessageTextCheckingType) = (result.range, .date(result.date))
                 ranges.append(tuple)
-                rangesForDetectors.updateValue(ranges, forKey: .date)
+                rangesForDetectors.updateValue(ranges, forKey: detector)
             case .phoneNumber:
-                var ranges = rangesForDetectors[.phoneNumber] ?? []
                 let tuple: (NSRange, MessageTextCheckingType) = (result.range, .phoneNumber(result.phoneNumber))
                 ranges.append(tuple)
-                rangesForDetectors.updateValue(ranges, forKey: .phoneNumber)
+                rangesForDetectors.updateValue(ranges, forKey: detector)
             case .link:
-                var ranges = rangesForDetectors[.url] ?? []
                 let tuple: (NSRange, MessageTextCheckingType) = (result.range, .link(result.url))
                 ranges.append(tuple)
-                rangesForDetectors.updateValue(ranges, forKey: .url)
+                rangesForDetectors.updateValue(ranges, forKey: detector)
             case .transitInformation:
-                var ranges = rangesForDetectors[.transitInformation] ?? []
                 let tuple: (NSRange, MessageTextCheckingType) = (result.range, .transitInfoComponents(result.components))
                 ranges.append(tuple)
-                rangesForDetectors.updateValue(ranges, forKey: .transitInformation)
+                rangesForDetectors.updateValue(ranges, forKey: detector)
+            case .tag:
+                let tagString = String(text[Range(result.range, in: attributedText)!])
+                let tuple: (NSRange, MessageTextCheckingType) = (result.range, .tag(tagString))
+                ranges.append(tuple)
+                rangesForDetectors.updateValue(ranges, forKey: detector)
 
             default:
                 fatalError("Received an unrecognized NSTextCheckingResult.CheckingType")
@@ -440,6 +452,9 @@ open class MessageLabel: UILabel {
                 transformedTransitInformation[key.rawValue] = value
             }
             handleTransitInformation(transformedTransitInformation)
+        case let .tag(tag):
+            guard let tag = tag else { return }
+            handleTag(tag)
         }
     }
     
@@ -463,6 +478,10 @@ open class MessageLabel: UILabel {
         delegate?.didSelectTransitInformation(components)
     }
     
+    private func handleTag(_ tag: String) {
+        delegate?.didSelecttag(tag)
+    }
+    
 }
 
 private enum MessageTextCheckingType {
@@ -471,4 +490,5 @@ private enum MessageTextCheckingType {
     case phoneNumber(String?)
     case link(URL?)
     case transitInfoComponents([NSTextCheckingKey: String]?)
+    case tag(String?)
 }
