@@ -34,8 +34,8 @@ public enum DetectorType: Hashable {
     case custom(NSRegularExpression)
 
     // swiftlint:disable force_try
-    public static var hashtag = DetectorType.custom(try! NSRegularExpression(pattern: "#[a-zA-Z0-9]{4,}", options: []))
-    public static var mention = DetectorType.custom(try! NSRegularExpression(pattern: "@[a-zA-Z0-9]{4,}", options: []))
+    public static var hashtag = DetectorType.custom(try! NSRegularExpression(pattern: "\\B#\\w*[a-zA-Z]+\\w*", options: []))
+    public static var mention = DetectorType.custom(try! NSRegularExpression(pattern: "\\B@\\w*[a-zA-Z]+\\w*", options: []))
     // swiftlint:enable force_try
 
     internal var textCheckingType: NSTextCheckingResult.CheckingType {
