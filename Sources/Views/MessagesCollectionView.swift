@@ -31,6 +31,8 @@ open class MessagesCollectionView: UICollectionView {
     open weak var messagesDataSource: MessagesDataSource?
 
     open weak var messagesDisplayDelegate: MessagesDisplayDelegate?
+    
+    open weak var messagesCollectionViewDelegate: MessagesCollectionViewDelegate?
 
     open weak var messagesLayoutDelegate: MessagesLayoutDelegate?
 
@@ -77,6 +79,7 @@ open class MessagesCollectionView: UICollectionView {
     
     @objc
     open func handleTapGesture(_ gesture: UIGestureRecognizer) {
+        messagesCollectionViewDelegate?.didTapMessagesCollectionView(gesture: gesture)
         guard gesture.state == .ended else { return }
         
         let touchLocation = gesture.location(in: self)
@@ -156,4 +159,9 @@ open class MessagesCollectionView: UICollectionView {
         return viewType
     }
 
+}
+
+
+public protocol MessagesCollectionViewDelegate: UICollectionViewDelegate {
+    func didTapMessagesCollectionView(gesture: UIGestureRecognizer)
 }
