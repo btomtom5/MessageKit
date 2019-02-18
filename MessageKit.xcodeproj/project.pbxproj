@@ -11,6 +11,8 @@
 		0EF0888C206F7E83007F2F58 /* CellSizeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF0888B206F7E83007F2F58 /* CellSizeCalculator.swift */; };
 		161DCD83221AAE8C0089A77A /* MessageInputBar.h in Headers */ = {isa = PBXBuildFile; fileRef = 161DCD71221AAE8C0089A77A /* MessageInputBar.h */; };
 		161DCD84221AAE8C0089A77A /* MessageInputBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161DCD72221AAE8C0089A77A /* MessageInputBar.swift */; };
+		161DCD85221AAE8C0089A77A /* NSConstraintLayoutSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161DCD74221AAE8C0089A77A /* NSConstraintLayoutSet.swift */; };
+		161DCD86221AAE8C0089A77A /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161DCD76221AAE8C0089A77A /* UIView+Extensions.swift */; };
 		161DCD87221AAE8C0089A77A /* NSMutableAttributedString+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161DCD77221AAE8C0089A77A /* NSMutableAttributedString+Extensions.swift */; };
 		161DCD88221AAE8C0089A77A /* InputBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161DCD79221AAE8C0089A77A /* InputBarButtonItem.swift */; };
 		161DCD89221AAE8C0089A77A /* InputStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161DCD7B221AAE8C0089A77A /* InputStackView.swift */; };
@@ -120,6 +122,8 @@
 		0EF0888B206F7E83007F2F58 /* CellSizeCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellSizeCalculator.swift; sourceTree = "<group>"; };
 		161DCD71221AAE8C0089A77A /* MessageInputBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageInputBar.h; sourceTree = "<group>"; };
 		161DCD72221AAE8C0089A77A /* MessageInputBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageInputBar.swift; sourceTree = "<group>"; };
+		161DCD74221AAE8C0089A77A /* NSConstraintLayoutSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSConstraintLayoutSet.swift; sourceTree = "<group>"; };
+		161DCD76221AAE8C0089A77A /* UIView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		161DCD77221AAE8C0089A77A /* NSMutableAttributedString+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSMutableAttributedString+Extensions.swift"; sourceTree = "<group>"; };
 		161DCD79221AAE8C0089A77A /* InputBarButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputBarButtonItem.swift; sourceTree = "<group>"; };
 		161DCD7B221AAE8C0089A77A /* InputStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputStackView.swift; sourceTree = "<group>"; };
@@ -242,6 +246,7 @@
 		161DCD73221AAE8C0089A77A /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				161DCD74221AAE8C0089A77A /* NSConstraintLayoutSet.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -249,6 +254,7 @@
 		161DCD75221AAE8C0089A77A /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				161DCD76221AAE8C0089A77A /* UIView+Extensions.swift */,
 				161DCD77221AAE8C0089A77A /* NSMutableAttributedString+Extensions.swift */,
 			);
 			path = Extensions;
@@ -676,6 +682,7 @@
 				1FCA6D30201C1CC900BC3480 /* UIEdgeInsets+Extensions.swift in Sources */,
 				B7A03F3D1F866946006AEF79 /* MediaMessageCell.swift in Sources */,
 				1FE783A220662905007FA024 /* TextMessageSizeCalculator.swift in Sources */,
+				161DCD86221AAE8C0089A77A /* UIView+Extensions.swift in Sources */,
 				B7A03F2E1F866895006AEF79 /* MessageKind.swift in Sources */,
 				B7A03F7B1F866B85006AEF79 /* MessageCollectionViewCell.swift in Sources */,
 				B7A03F6B1F8669EB006AEF79 /* UIColor+Extensions.swift in Sources */,
@@ -708,6 +715,7 @@
 				B7A03F2D1F866895006AEF79 /* LabelAlignment.swift in Sources */,
 				1F6C040C206A2891007BDE44 /* MessageContentCell.swift in Sources */,
 				B7A03F2C1F866895006AEF79 /* DetectorType.swift in Sources */,
+				161DCD85221AAE8C0089A77A /* NSConstraintLayoutSet.swift in Sources */,
 				B7A03F271F866895006AEF79 /* Avatar.swift in Sources */,
 				161DCD8B221AAE8C0089A77A /* SeparatorLine.swift in Sources */,
 				1F82D1431FB1B75B00B81A88 /* AvatarPosition.swift in Sources */,
