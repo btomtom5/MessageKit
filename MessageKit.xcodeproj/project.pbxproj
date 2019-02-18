@@ -9,19 +9,6 @@
 /* Begin PBXBuildFile section */
 		0EE91E661FDEC888005420A2 /* CGRect+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE91E651FDEC887005420A2 /* CGRect+Extensions.swift */; };
 		0EF0888C206F7E83007F2F58 /* CellSizeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF0888B206F7E83007F2F58 /* CellSizeCalculator.swift */; };
-		161DCD83221AAE8C0089A77A /* MessageInputBar.h in Headers */ = {isa = PBXBuildFile; fileRef = 161DCD71221AAE8C0089A77A /* MessageInputBar.h */; };
-		161DCD84221AAE8C0089A77A /* MessageInputBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161DCD72221AAE8C0089A77A /* MessageInputBar.swift */; };
-		161DCD85221AAE8C0089A77A /* NSConstraintLayoutSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161DCD74221AAE8C0089A77A /* NSConstraintLayoutSet.swift */; };
-		161DCD86221AAE8C0089A77A /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161DCD76221AAE8C0089A77A /* UIView+Extensions.swift */; };
-		161DCD87221AAE8C0089A77A /* NSMutableAttributedString+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161DCD77221AAE8C0089A77A /* NSMutableAttributedString+Extensions.swift */; };
-		161DCD88221AAE8C0089A77A /* InputBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161DCD79221AAE8C0089A77A /* InputBarButtonItem.swift */; };
-		161DCD89221AAE8C0089A77A /* InputStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161DCD7B221AAE8C0089A77A /* InputStackView.swift */; };
-		161DCD8A221AAE8C0089A77A /* InputTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161DCD7C221AAE8C0089A77A /* InputTextView.swift */; };
-		161DCD8B221AAE8C0089A77A /* SeparatorLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161DCD7D221AAE8C0089A77A /* SeparatorLine.swift */; };
-		161DCD8C221AAE8C0089A77A /* InputPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161DCD7F221AAE8C0089A77A /* InputPlugin.swift */; };
-		161DCD8D221AAE8C0089A77A /* MessageInputBarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161DCD80221AAE8C0089A77A /* MessageInputBarDelegate.swift */; };
-		161DCD8E221AAE8C0089A77A /* InputItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161DCD81221AAE8C0089A77A /* InputItem.swift */; };
-		161DCD8F221AAE8C0089A77A /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 161DCD82221AAE8C0089A77A /* Info.plist */; };
 		1F066E131FD90BB600E11013 /* MessagesViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7FC8CB1FD2700B006CC979 /* MessagesViewControllerSpec.swift */; };
 		1F066E141FD90BB700E11013 /* MessageLabelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F066E101FD90A0600E11013 /* MessageLabelSpec.swift */; };
 		1F066E1D1FDA3C1700E11013 /* SenderSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F066E1C1FDA3C1700E11013 /* SenderSpec.swift */; };
@@ -120,19 +107,6 @@
 /* Begin PBXFileReference section */
 		0EE91E651FDEC887005420A2 /* CGRect+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGRect+Extensions.swift"; sourceTree = "<group>"; };
 		0EF0888B206F7E83007F2F58 /* CellSizeCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellSizeCalculator.swift; sourceTree = "<group>"; };
-		161DCD71221AAE8C0089A77A /* MessageInputBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageInputBar.h; sourceTree = "<group>"; };
-		161DCD72221AAE8C0089A77A /* MessageInputBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageInputBar.swift; sourceTree = "<group>"; };
-		161DCD74221AAE8C0089A77A /* NSConstraintLayoutSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSConstraintLayoutSet.swift; sourceTree = "<group>"; };
-		161DCD76221AAE8C0089A77A /* UIView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
-		161DCD77221AAE8C0089A77A /* NSMutableAttributedString+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSMutableAttributedString+Extensions.swift"; sourceTree = "<group>"; };
-		161DCD79221AAE8C0089A77A /* InputBarButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputBarButtonItem.swift; sourceTree = "<group>"; };
-		161DCD7B221AAE8C0089A77A /* InputStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputStackView.swift; sourceTree = "<group>"; };
-		161DCD7C221AAE8C0089A77A /* InputTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputTextView.swift; sourceTree = "<group>"; };
-		161DCD7D221AAE8C0089A77A /* SeparatorLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeparatorLine.swift; sourceTree = "<group>"; };
-		161DCD7F221AAE8C0089A77A /* InputPlugin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputPlugin.swift; sourceTree = "<group>"; };
-		161DCD80221AAE8C0089A77A /* MessageInputBarDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageInputBarDelegate.swift; sourceTree = "<group>"; };
-		161DCD81221AAE8C0089A77A /* InputItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputItem.swift; sourceTree = "<group>"; };
-		161DCD82221AAE8C0089A77A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1F066E101FD90A0600E11013 /* MessageLabelSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageLabelSpec.swift; sourceTree = "<group>"; };
 		1F066E1C1FDA3C1700E11013 /* SenderSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SenderSpec.swift; sourceTree = "<group>"; };
 		1F066E201FDA3DEA00E11013 /* AvatarSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarSpec.swift; sourceTree = "<group>"; };
@@ -228,66 +202,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		161DCD70221AAE8C0089A77A /* MessageInputBar */ = {
-			isa = PBXGroup;
-			children = (
-				161DCD71221AAE8C0089A77A /* MessageInputBar.h */,
-				161DCD72221AAE8C0089A77A /* MessageInputBar.swift */,
-				161DCD73221AAE8C0089A77A /* Models */,
-				161DCD75221AAE8C0089A77A /* Extensions */,
-				161DCD78221AAE8C0089A77A /* Controls */,
-				161DCD7A221AAE8C0089A77A /* Views */,
-				161DCD7E221AAE8C0089A77A /* Protocols */,
-				161DCD82221AAE8C0089A77A /* Info.plist */,
-			);
-			path = MessageInputBar;
-			sourceTree = "<group>";
-		};
-		161DCD73221AAE8C0089A77A /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				161DCD74221AAE8C0089A77A /* NSConstraintLayoutSet.swift */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		161DCD75221AAE8C0089A77A /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				161DCD76221AAE8C0089A77A /* UIView+Extensions.swift */,
-				161DCD77221AAE8C0089A77A /* NSMutableAttributedString+Extensions.swift */,
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
-		161DCD78221AAE8C0089A77A /* Controls */ = {
-			isa = PBXGroup;
-			children = (
-				161DCD79221AAE8C0089A77A /* InputBarButtonItem.swift */,
-			);
-			path = Controls;
-			sourceTree = "<group>";
-		};
-		161DCD7A221AAE8C0089A77A /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				161DCD7B221AAE8C0089A77A /* InputStackView.swift */,
-				161DCD7C221AAE8C0089A77A /* InputTextView.swift */,
-				161DCD7D221AAE8C0089A77A /* SeparatorLine.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		161DCD7E221AAE8C0089A77A /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-				161DCD7F221AAE8C0089A77A /* InputPlugin.swift */,
-				161DCD80221AAE8C0089A77A /* MessageInputBarDelegate.swift */,
-				161DCD81221AAE8C0089A77A /* InputItem.swift */,
-			);
-			path = Protocols;
-			sourceTree = "<group>";
-		};
 		1F7FC8C21FD26F22006CC979 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -342,7 +256,6 @@
 		88916B3C1CF0DF5100469F91 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				161DCD70221AAE8C0089A77A /* MessageInputBar */,
 				B01E2DCC1F5BA34700E4FA1C /* Assets */,
 				B096439D1F295DC3004D0129 /* Layout */,
 				B09643991F295D58004D0129 /* Models */,
@@ -538,7 +451,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B7A03F751F866A06006AEF79 /* MessageKit.h in Headers */,
-				161DCD83221AAE8C0089A77A /* MessageInputBar.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -625,7 +537,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				161DCD8F221AAE8C0089A77A /* Info.plist in Resources */,
 				B0C8D99B1F73076B000A86E4 /* MessageKitAssets.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -663,12 +574,9 @@
 				382C794221705D2000F4FAF5 /* HorizontalEdgeInsets.swift in Sources */,
 				B7A03F3C1F866946006AEF79 /* LocationMessageCell.swift in Sources */,
 				1FF377AA20087D78004FD648 /* MessagesViewController+Menu.swift in Sources */,
-				161DCD87221AAE8C0089A77A /* NSMutableAttributedString+Extensions.swift in Sources */,
 				B7A03F5B1F8669CA006AEF79 /* MessageType.swift in Sources */,
-				161DCD8E221AAE8C0089A77A /* InputItem.swift in Sources */,
 				B7A03F601F8669CA006AEF79 /* MessagesDisplayDelegate.swift in Sources */,
 				1FE783A8206633C0007FA024 /* InsetLabel.swift in Sources */,
-				161DCD8C221AAE8C0089A77A /* InputPlugin.swift in Sources */,
 				B7A03F5C1F8669CA006AEF79 /* MessageCellDelegate.swift in Sources */,
 				1FF377A420087C82004FD648 /* MessageKitError.swift in Sources */,
 				1F6C040E206A2AF4007BDE44 /* MessageReusableView.swift in Sources */,
@@ -676,21 +584,16 @@
 				B7A03F281F866895006AEF79 /* LocationMessageSnapshotOptions.swift in Sources */,
 				B7A03F6C1F8669EB006AEF79 /* UIView+Extensions.swift in Sources */,
 				B7A03F3A1F866946006AEF79 /* TextMessageCell.swift in Sources */,
-				161DCD8A221AAE8C0089A77A /* InputTextView.swift in Sources */,
 				B7A03F191F86682C006AEF79 /* MessagesCollectionViewLayoutAttributes.swift in Sources */,
 				B7A03F461F86694F006AEF79 /* AvatarView.swift in Sources */,
 				1FCA6D30201C1CC900BC3480 /* UIEdgeInsets+Extensions.swift in Sources */,
 				B7A03F3D1F866946006AEF79 /* MediaMessageCell.swift in Sources */,
 				1FE783A220662905007FA024 /* TextMessageSizeCalculator.swift in Sources */,
-				161DCD86221AAE8C0089A77A /* UIView+Extensions.swift in Sources */,
 				B7A03F2E1F866895006AEF79 /* MessageKind.swift in Sources */,
 				B7A03F7B1F866B85006AEF79 /* MessageCollectionViewCell.swift in Sources */,
 				B7A03F6B1F8669EB006AEF79 /* UIColor+Extensions.swift in Sources */,
 				B7A03F5E1F8669CA006AEF79 /* MessagesLayoutDelegate.swift in Sources */,
-				161DCD84221AAE8C0089A77A /* MessageInputBar.swift in Sources */,
-				161DCD88221AAE8C0089A77A /* InputBarButtonItem.swift in Sources */,
 				B7A03F261F866895006AEF79 /* MessageKitDateFormatter.swift in Sources */,
-				161DCD8D221AAE8C0089A77A /* MessageInputBarDelegate.swift in Sources */,
 				B7A03F6D1F8669EB006AEF79 /* Bundle+Extensions.swift in Sources */,
 				1FD589602064E08A004B5081 /* MediaItem.swift in Sources */,
 				B7A03F611F8669CA006AEF79 /* MessagesDataSource.swift in Sources */,
@@ -701,7 +604,6 @@
 				1FD5896420660C1C004B5081 /* LocationItem.swift in Sources */,
 				B7A03F291F866895006AEF79 /* Sender.swift in Sources */,
 				B7A03F4F1F86697C006AEF79 /* MessagesViewController.swift in Sources */,
-				161DCD89221AAE8C0089A77A /* InputStackView.swift in Sources */,
 				B7A03F251F866895006AEF79 /* NSConstraintLayoutSet.swift in Sources */,
 				0EE91E661FDEC888005420A2 /* CGRect+Extensions.swift in Sources */,
 				B7A03F181F86682C006AEF79 /* MessagesCollectionViewFlowLayout.swift in Sources */,
@@ -715,9 +617,7 @@
 				B7A03F2D1F866895006AEF79 /* LabelAlignment.swift in Sources */,
 				1F6C040C206A2891007BDE44 /* MessageContentCell.swift in Sources */,
 				B7A03F2C1F866895006AEF79 /* DetectorType.swift in Sources */,
-				161DCD85221AAE8C0089A77A /* NSConstraintLayoutSet.swift in Sources */,
 				B7A03F271F866895006AEF79 /* Avatar.swift in Sources */,
-				161DCD8B221AAE8C0089A77A /* SeparatorLine.swift in Sources */,
 				1F82D1431FB1B75B00B81A88 /* AvatarPosition.swift in Sources */,
 				1FF377AC20087DA2004FD648 /* MessagesViewController+Keyboard.swift in Sources */,
 			);
