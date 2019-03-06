@@ -36,12 +36,20 @@ public struct Sender {
 
     /// The display name of a sender.
     public let displayName: String
+    
+    public var profilePictureUrl: URL?
 
     // MARK: - Intializers
 
     public init(id: String, displayName: String) {
         self.id = id
         self.displayName = displayName
+    }
+    
+    public init(id: String, displayName: String, profilePictureUrl: URL) {
+        self.id = id
+        self.displayName = displayName
+        self.profilePictureUrl = profilePictureUrl
     }
 }
 
