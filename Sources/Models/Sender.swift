@@ -46,7 +46,7 @@ public struct Sender {
         self.displayName = displayName
     }
     
-    public init(id: String, displayName: String, profilePictureUrl: URL) {
+    public init(id: String, displayName: String, profilePictureUrl: URL?) {
         self.id = id
         self.displayName = displayName
         self.profilePictureUrl = profilePictureUrl
