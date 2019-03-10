@@ -90,7 +90,7 @@ open class AvatarView: UIImageView {
         image = getImageFrom(initials: initials)
     }
 
-    func getImageFrom(initials: String) -> UIImage {
+    open func getImageFrom(initials: String) -> UIImage {
         let width = frame.width
         let height = frame.height
         if width == 0 || height == 0 {return UIImage()}
