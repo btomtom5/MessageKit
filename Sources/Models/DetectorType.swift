@@ -1,7 +1,7 @@
 /*
  MIT License
 
- Copyright (c) 2017-2018 MessageKit
+ Copyright (c) 2017-2019 MessageKit
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -24,37 +24,20 @@
 
 import Foundation
 
-public enum DetectorType {
+public enum DetectorType: Hashable {
 
     case address
     case date
     case phoneNumber
     case url
     case transitInformation
-    case tag
+    case custom(NSRegularExpression)
 
-    // MARK: - Not supported yet
+    // swiftlint:disable force_try
+    public static var hashtag = DetectorType.custom(try! NSRegularExpression(pattern: "#[a-zA-Z0-9]{4,}", options: []))
+    public static var mention = DetectorType.custom(try! NSRegularExpression(pattern: "@[a-zA-Z0-9]{4,}", options: []))
+    // swiftlint:enable force_try
 
-    //case mention
-    //case custom
-    init(textCheckingResult: NSTextCheckingResult) {
-        switch textCheckingResult.resultType {
-        case .address: self = .address
-        case .date: self = .date
-        case .phoneNumber: self = .phoneNumber
-        case .link: self = .url
-        case .transitInformation: self = .transitInformation
-        case .regularExpression:
-            if textCheckingResult.regularExpression?.pattern == DetectorType.tag.dataDetector.pattern {
-                self = .tag
-            } else {
-                fatalError("unsupported NSTextCheckingResult.CheckingType provided to DetectorType initializer")
-            }
-        default:
-            fatalError("unsupported NSTextCheckingResult.CheckingType provided to DetectorType initializer")
-        }
-    }
-    
     internal var textCheckingType: NSTextCheckingResult.CheckingType {
         switch self {
         case .address: return .address
@@ -62,49 +45,32 @@ public enum DetectorType {
         case .phoneNumber: return .phoneNumber
         case .url: return .link
         case .transitInformation: return .transitInformation
-        case .tag: return .regularExpression
+        case .custom: return .regularExpression
         }
     }
-    
-    private var isSupportedByNSDataDetector: Bool {
+
+    /// Simply check if the detector type is a .custom
+    public var isCustom: Bool {
         switch self {
-        case .address,
-             .date,
-             .phoneNumber,
-             .url,
-             .transitInformation:
-            return true
-        default:
-            return false
+        case .custom: return true
+        default: return false
         }
     }
-    
-    internal var dataDetector: NSDataDetector {
+
+    ///The hashValue of the `DetectorType` so we can conform to `Hashable` and be sorted.
+    public func hash(into: inout Hasher) {
+        into.combine(toInt())
+    }
+
+    /// Return an 'Int' value for each `DetectorType` type so `DetectorType` can conform to `Hashable`
+    private func toInt() -> Int {
         switch self {
-        case .address,
-             .date,
-             .phoneNumber,
-             .url,
-             .transitInformation:
-            return try! NSDataDetector(types: self.textCheckingType.rawValue)
-        case .tag:
-            return try! NSRegularExpression(pattern: "\\B#\\w*[a-zA-Z]+\\w*", options: []) as! NSDataDetector
-        }
-    }
-    
-    static func getDataDetectors(detectorTypes: [DetectorType]) -> [NSDataDetector] {
-        var detectors: [NSDataDetector] = []
-        let nativeDetectorTypes = detectorTypes.filter({$0.isSupportedByNSDataDetector})
-        let checkingTypes = nativeDetectorTypes.reduce(0) { $0 | $1.textCheckingType.rawValue }
-        
-        if let detector = try? NSDataDetector(types: checkingTypes) {
-            detectors.append(detector)
-        }
-        
-        let nonNativeDetectorTypes = detectorTypes.filter({!$0.isSupportedByNSDataDetector})
-        
-        for detectorType in nonNativeDetectorTypes {
-            detectors.append(detectorType.dataDetector)
+        case .address: return 0
+        case .date: return 1
+        case .phoneNumber: return 2
+        case .url: return 3
+        case .transitInformation: return 4
+        case .custom(let regex): return regex.hashValue
         }
         return detectors
     }

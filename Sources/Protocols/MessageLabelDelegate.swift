@@ -1,7 +1,7 @@
 /*
  MIT License
 
- Copyright (c) 2017-2018 MessageKit
+ Copyright (c) 2017-2019 MessageKit
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -57,11 +57,24 @@ public protocol MessageLabelDelegate: AnyObject {
     ///   - transitInformation: The selected transit information.
     func didSelectTransitInformation(_ transitInformation: [String: String])
     
-    /// Triggered when a tap occurs on a detected tag.
+    /// Triggered when a tap occurs on a mention
     ///
     /// - Parameters:
-    ///   - tag: The selected tag.
-    func didSelectTag(_ tag: String)
+    ///   - mention: The selected mention
+    func didSelectMention(_ mention: String)
+    
+    /// Triggered when a tap occurs on a hashtag
+    ///
+    /// - Parameters:
+    ///   - mention: The selected hashtag
+    func didSelectHashtag(_ hashtag: String)
+
+    /// Triggered when a tap occurs on a custom regular expression
+    ///
+    /// - Parameters:
+    ///   - pattern: the pattern of the regular expression
+    ///   - match: part that match with the regular expression
+    func didSelectCustom(_ pattern: String, match: String?)
 
 }
 
@@ -76,6 +89,11 @@ public extension MessageLabelDelegate {
     func didSelectURL(_ url: URL) {}
     
     func didSelectTransitInformation(_ transitInformation: [String: String]) {}
-    
-    func didSelectTag(_ tag: String) {}
+
+    func didSelectMention(_ mention: String) {}
+
+    func didSelectHashtag(_ hashtag: String) {}
+
+    func didSelectCustom(_ pattern: String, match: String?) {}
+
 }
