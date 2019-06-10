@@ -42,12 +42,21 @@ public struct Sender: SenderType {
 
     /// The display name of a sender.
     public let displayName: String
-
+    
+    // profilePictureUrl of the sender
+    public var profilePictureUrl: URL?
+    
     // MARK: - Intializers
 
     public init(senderId: String, displayName: String) {
         self.senderId = senderId
         self.displayName = displayName
+    }
+    
+    public init(id: String, displayName: String, profilePictureUrl: URL?) {
+        self.id = id
+        self.displayName = displayName
+        self.profilePictureUrl = profilePictureUrl
     }
 
     @available(*, deprecated: 3.0.0, message: "`id` has been renamed `senderId` as defined in the `SenderType` protocol")
